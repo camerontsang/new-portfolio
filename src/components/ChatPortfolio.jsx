@@ -12,6 +12,7 @@ export const ChatPortfolio = () => {
   const [query, setQuery] = useState('');
   const [selectedTopic, setSelectedTopic] = useState('');
   const [showBackground, setShowBackground] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef(null);
 
   // Auto-scroll to latest message
@@ -27,7 +28,7 @@ export const ChatPortfolio = () => {
     about: {
       text: `# About Me
 
-I'm Cameron, a junior at **NYU Shanghai** studying Data Science and Mathematics. 
+I'm Cameron, a senior at **NYU Shanghai** studying Data Science and Mathematics. 
 
 ## 🎓 Education
 **NYU Shanghai** • Data Science & Mathematics  
@@ -79,6 +80,28 @@ Currently based in NYC. Open to remote work and relocating for the right opportu
     setMessages(prev => [...prev, { id: messageId, text: text, isBot: true, isTyping: false }]);
   };
 
+  const callChatAPI = async (userMessage) => {
+    try {
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ message: userMessage }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to get response');
+      }
+
+      const data = await response.json();
+      return data.message;
+    } catch (error) {
+      console.error('Error calling chat API:', error);
+      return "I'm sorry, I'm having trouble responding right now. Please try again later or contact Cameron directly at camerontsang@gmail.com.";
+    }
+  };
+
   const handleTopicClick = (topic) => {
     setShowBackground(false); // Hide background when button is clicked
     
@@ -111,9 +134,10 @@ Currently based in NYC. Open to remote work and relocating for the right opportu
   };
 
 
-  const handleSearch = () => {
-    if (query.trim()) {
-      setShowBackground(false); // Hide background when search is used
+  const handleSearch = async () => {
+    if (query.trim() && !isLoading) {
+      setShowBackground(false);
+      setIsLoading(true);
       
       const currentQuery = query;
       const userMessage = { 
@@ -125,14 +149,28 @@ Currently based in NYC. Open to remote work and relocating for the right opportu
       setMessages(prev => [...prev, userMessage]);
       setQuery('');
       
-      // Generic response for custom queries
-      setTimeout(() => {
-        addBotMessage(`Thanks for your question! "${currentQuery}" is a great topic. 
-
-I'd be happy to help! You can ask me about my background, technical skills, projects I've worked on, or how to get in touch. 
-
-Try clicking one of the topic buttons above for detailed information, or feel free to ask me anything specific about my experience in data science, web development, or my journey at NYU Shanghai.`);
-      }, 200);
+      // Add loading message
+      const loadingMessageId = Date.now();
+      setMessages(prev => [...prev, { 
+        id: loadingMessageId, 
+        text: "Thinking...", 
+        isBot: true, 
+        isTyping: true 
+      }]);
+      
+      try {
+        const response = await callChatAPI(currentQuery);
+        
+        // Remove loading message and add actual response
+        setMessages(prev => prev.filter(msg => msg.id !== loadingMessageId));
+        addBotMessage(response);
+      } catch (error) {
+        // Remove loading message and add error message
+        setMessages(prev => prev.filter(msg => msg.id !== loadingMessageId));
+        addBotMessage("I'm sorry, I'm having trouble responding right now. Please try again later.");
+      } finally {
+        setIsLoading(false);
+      }
     }
   };
 
@@ -325,9 +363,18 @@ Try clicking one of the topic buttons above for detailed information, or feel fr
                           ? 'bg-white shadow-lg text-gray-800' 
                           : 'bg-blue-500 text-white'
                       }`}>
-                        <div className="text-base leading-relaxed overflow-x-hidden">
+                        <div className="text-base leading-relaxed overflow-x-hidden select-text">
                           {message.component ? (
                             message.component
+                          ) : message.isTyping ? (
+                            <div className="flex items-center space-x-1 select-none">
+                              <span>{message.text}</span>
+                              <div className="flex space-x-1">
+                                <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
+                                <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
+                                <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
+                              </div>
+                            </div>
                           ) : typeof message.text === 'string' ? (
                             <ReactMarkdown 
                               remarkPlugins={[remarkGfm]}
@@ -439,14 +486,21 @@ Try clicking one of the topic buttons above for detailed information, or feel fr
               />
               <button 
                 onClick={handleSearch}
-                disabled={!query.trim()}
+                disabled={!query.trim() || isLoading}
                 className={`absolute right-2 top-2 w-10 h-10 bg-blue-500 text-white rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors ${
-                  !query.trim() ? 'opacity-50 cursor-not-allowed' : ''
+                  !query.trim() || isLoading ? 'opacity-50 cursor-not-allowed' : ''
                 }`}
               >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-                </svg>
+                {isLoading ? (
+                  <svg className="animate-spin w-5 h-5" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="m4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                ) : (
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                  </svg>
+                )}
               </button>
             </div>
           </motion.div>

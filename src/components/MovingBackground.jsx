@@ -28,7 +28,7 @@ const MovingBackground = ({ show = true }) => {
       <div style={{ ...layerStyle, top: '-20px' }}>
         <TextBackground
           texts={['Cameron Tsang - Data Science & Math @ NYU Shanghai']}
-          velocity={25}
+          velocity={15}
           className="text-gray-300 opacity-15"
         />
       </div>
@@ -37,7 +37,7 @@ const MovingBackground = ({ show = true }) => {
       <div style={{ ...layerStyle, top: '100px' }}>
         <TextBackground
           texts={['Cameron Tsang - Data Science & Math @ NYU Shanghai']}
-          velocity={-25}
+          velocity={-15}
           className="text-gray-300 opacity-15"
         />
       </div>
@@ -46,7 +46,7 @@ const MovingBackground = ({ show = true }) => {
       <div style={{ ...layerStyle, top: '220px' }}>
         <TextBackground
           texts={['Cameron Tsang - Data Science & Math @ NYU Shanghai']}
-          velocity={25}
+          velocity={15}
           className="text-gray-300 opacity-15"
         />
       </div>
@@ -55,7 +55,7 @@ const MovingBackground = ({ show = true }) => {
       <div style={{ ...layerStyle, top: '340px' }}>
         <TextBackground
           texts={['Cameron Tsang - Data Science & Math @ NYU Shanghai']}
-          velocity={-25}
+          velocity={-15}
           className="text-gray-300 opacity-15"
         />
       </div>
@@ -64,7 +64,7 @@ const MovingBackground = ({ show = true }) => {
       <div style={{ ...layerStyle, top: '460px' }}>
         <TextBackground
           texts={['Cameron Tsang - Data Science & Math @ NYU Shanghai']}
-          velocity={25}
+          velocity={15}
           className="text-gray-300 opacity-15"
         />
       </div>
@@ -73,7 +73,7 @@ const MovingBackground = ({ show = true }) => {
       <div style={{ ...layerStyle, top: '580px' }}>
         <TextBackground
           texts={['Cameron Tsang - Data Science & Math @ NYU Shanghai']}
-          velocity={-20}
+          velocity={-15}
           className="text-gray-300 opacity-15"
         />
       </div>
@@ -82,7 +82,7 @@ const MovingBackground = ({ show = true }) => {
       <div style={{ ...layerStyle, top: '700px' }}>
         <TextBackground
           texts={['Cameron Tsang - Data Science & Math @ NYU Shanghai']}
-          velocity={25}
+          velocity={15}
           className="text-gray-300 opacity-15"
         />
       </div>
@@ -91,7 +91,7 @@ const MovingBackground = ({ show = true }) => {
       <div style={{ ...layerStyle, top: '820px' }}>
         <TextBackground
           texts={['Cameron Tsang - Data Science & Math @ NYU Shanghai']}
-          velocity={-25}
+          velocity={-15}
           className="text-gray-300 opacity-15"
         />
       </div>
@@ -99,7 +99,7 @@ const MovingBackground = ({ show = true }) => {
        <div style={{ ...layerStyle, top: '940px' }}>
         <TextBackground
           texts={['Cameron Tsang - Data Science & Math @ NYU Shanghai']}
-          velocity={25}
+          velocity={15}
           className="text-gray-300 opacity-15"
         />
       </div>
