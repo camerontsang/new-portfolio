@@ -27,55 +27,20 @@ export const ChatPortfolio = () => {
     about: {
       text: `# About Me
 
-I'm Cameron, a junior at **NYU Shanghai** studying Data Science and Mathematics. I'm passionate about using data to solve real-world problems and building intelligent systems.
+I'm Cameron, a junior at **NYU Shanghai** studying Data Science and Mathematics. 
 
 ## 🎓 Education
 **NYU Shanghai** • Data Science & Mathematics  
 *Key coursework:* Machine Learning, Data Structures, Programming Tools for DS, Causal Inference, and Probability & Statistics
 
-## 🔬 Focus Areas
-I specialize in building machine learning models, performing statistical analysis, and extracting insights from complex datasets to solve real-world problems.
-
 ## 💼 Experience
-Data Science Intern & Research Assistant, focusing on predictive analytics and research data analysis.`,
+Data Science Intern @ Sequoia Real Estate, focusing on predictive analytics and research data analysis.
+
+## 🔬 Focus Areas
+I specialize in building machine learning models, performing statistical analysis, and extracting insights from complex datasets to solve real-world problems.`,
       delay: 50
     },
-    skills: {
-      text: `# Technical Skills
-
-Here's a breakdown of my technical expertise across different domains:
-
-## 💻 Programming Languages
-- **Python** (95%) - My strongest language for data analysis and ML
-- **SQL** (90%) - Database management and complex queries  
-- **React & JavaScript** (65%) - Web development
-- **R** (75%) - Statistical computing and analysis
-
-## 🤖 Machine Learning & AI
-- **PyTorch & TensorFlow** (70%) - Deep learning frameworks
-- **Scikit-learn** (85%) - Classical machine learning algorithms
-- **Pandas & NumPy** (80%) - Data manipulation and numerical computing
-- **Matplotlib & Seaborn** (75%) - Data visualization
-
-## 🌐 Web Development
-- **React** (65%) - Frontend development
-- **JavaScript/TypeScript** (65%) - Modern web technologies
-- **HTML/CSS** (70%) - Frontend markup and styling
-- **Node.js** (60%) - Backend development
-
-## 📊 Data Science Tools
-- **Jupyter Notebooks** (90%) - Interactive data analysis
-- **Git/GitHub** (80%) - Version control and collaboration
-- **STATA** (70%) - Statistical analysis software
-- **LaTeX** (65%) - Academic writing and documentation
-
-## 🗄️ Databases & Analytics
-- **SQL** (90%) - Query optimization and database design
-- **Statistical Analysis** (85%) - Hypothesis testing and modeling
-- **Data Cleaning** (90%) - Preprocessing and validation
-- **Causal Inference** (75%) - Research methodology`,
-      delay: 50
-    },
+    
     projects: {
       text: <ProjectsCarousel />,
       delay: 50
@@ -83,15 +48,13 @@ Here's a breakdown of my technical expertise across different domains:
     contact: {
       text: `# Get In Touch
 
-I typically respond within 24 hours. Looking forward to hearing from you!
-
 ## 📧 Email
 **Best for professional inquiries**  
-[your-email@example.com](mailto:your-email@example.com)
+[camerontsang@gmail.com](mailto:your-email@example.com)
 
 ## 💼 LinkedIn
 **Professional networking and connections**  
-[Connect with me →](https://linkedin.com/in/yourusername)
+[Connect with me →](https://linkedin.com/in/camerontsang)
 
 ## 🐙 GitHub
 **Check out my code and collaborate**  
@@ -99,15 +62,14 @@ I typically respond within 24 hours. Looking forward to hearing from you!
 
 ---
 
-## 📍 Location & Availability
+Currently based in NYC. Open to remote work and relocating for the right opportunity.
 
-Currently based in **Shanghai, China**. Open to remote work and relocating for the right opportunity.
+
 
 **Available for:**
 - Data Science internships and full-time roles
 - Web development projects  
-- Research collaborations
-- Freelance opportunities`,
+- Research collaborations`,
       delay: 30
     }
   };
@@ -195,7 +157,7 @@ Try clicking one of the topic buttons above for detailed information, or feel fr
 
       {/* Main Content Container */}
       <div className="container mx-auto flex h-full max-w-5xl flex-col relative z-10">
-        <main className={`flex-1 px-2 ${messages.length > 0 ? 'overflow-y-auto overflow-x-hidden' : 'overflow-y-auto'}`}>
+        <main className="flex-1 px-2 overflow-hidden">
           {/* Top Section - Logo and Greeting */}
           <div className="flex flex-col items-center" style={{ paddingTop: messages.length === 0 ? '120px' : '80px', paddingBottom: '32px' }}>
             {/* Logo/Avatar with Orb - Only show in center when no messages */}
@@ -325,17 +287,18 @@ Try clicking one of the topic buttons above for detailed information, or feel fr
           </div>
 
           {/* Middle Section - Chat Messages */}
-          <div className="flex-1 flex items-center justify-center min-h-0">
+          <div className="flex-1 flex items-center justify-center min-h-0 px-4">
           <AnimatePresence>
             {messages.length > 0 && (
               <motion.div 
-                className="w-full max-w-5xl space-y-6 flex-1 overflow-y-auto overflow-x-hidden py-4 sm:py-6 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100"
+                className="w-full max-w-5xl space-y-6 flex-1 overflow-y-auto overflow-x-hidden py-8 px-2 my-4 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 style={{
                   scrollbarWidth: 'thin',
-                  scrollbarColor: '#d1d5db #f3f4f6'
+                  scrollbarColor: '#d1d5db #f3f4f6',
+                  maxHeight: 'calc(100vh - 200px)'
                 }}
               >
                 {messages.map((message) => (

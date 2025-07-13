@@ -61,28 +61,29 @@ const ProjectContent = ({ project }) => {
 
 const data = [
   {
-    category: "AI & Machine Learning",
-    title: "AI Music Recommender",
-    src: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3",
-    content: <ProjectContent project={{
-      description: "A sophisticated music recommender system powered by ChatGPT that provides personalized music suggestions based on user preferences, listening history, and mood analysis.",
-      technologies: ["React", "Tailwind CSS", "OpenAI API", "Java", "Node.js"],
-      github: "https://github.com/camerontsang/musAIc"
-    }} />,
-  },
-  {
-    category: "Data Science",
-    title: "Data Analysis Tools",
+    category: "Data Science & Real Estate",
+    title: "Full Stack Real Estate Analysis Website",
     src: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3",
     content: <ProjectContent project={{
-      description: "Advanced research-focused analytical tools for data processing, statistical analysis, and visualization. Built for academic research and data-driven insights.",
-      technologies: ["Python", "Pandas", "NumPy", "Matplotlib", "Jupyter"],
+      description: "Advanced research-focused analytical tools for data processing, statistical analysis, and visualization. Built for Sequoia Real Estate.",
+      technologies: ["Python", "Pandas", "NumPy", "Matplotlib", "Jupyter","React", "Tailwind CSS", "Node.js", "Express", "MongoDB"],
       github: null
     }} />,
   },
   {
+    category: "AI & Machine Learning",
+    title: "AI Music Recommender",
+    src: "https://images.unsplash.com/photo-1678957949479-b1e876bee3f1?q=80&w=3430&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    content: <ProjectContent project={{
+      description: "A  music recommender system powered by ChatGPT that provides personalized music suggestions based on user preferences, listening history, and mood analysis.",
+      technologies: ["React", "Tailwind CSS", "OpenAI API", ],
+      github: "https://github.com/camerontsang/musAIc"
+    }} />,
+  },
+  
+  {
     category: "Web Development",
-    title: "Modern Portfolio",
+    title: "My Portfolio",
     src: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3",
     content: <ProjectContent project={{
       description: "This interactive portfolio built with React and Vite, featuring a ChatGPT-style interface, animated components, and responsive design.",
@@ -90,16 +91,4 @@ const data = [
       github: null
     }} />,
   },
-  {
-    category: "Machine Learning",
-    title: "Predictive Analytics Models",
-    src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3",
-    content: <ProjectContent project={{
-      description: "Machine learning models for predictive analytics, including time series forecasting, classification algorithms, and deep learning implementations.",
-      technologies: ["Python", "PyTorch", "TensorFlow", "Scikit-learn", "SQL"],
-      github: null
-    }} />,
-  },
-  
-  
 ];

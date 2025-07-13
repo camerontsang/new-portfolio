@@ -10,27 +10,33 @@ const SkillsChat = () => {
       category: '💻 Programming Languages',
       icon: <Code className="h-4 w-4" />,
       skills: [
-        { name: 'Python', level: 'Expert', description: 'My strongest language for data analysis, machine learning, and statistical computing' },
-        { name: 'SQL', level: 'Intermediate', description: 'Database management, complex queries, and data extraction from relational databases' },
-        { name: 'React & JavaScript', level: 'Intermediate', description: 'Modern web development, building interactive user interfaces and dynamic applications' },
-        { name: 'HTML & CSS', level: 'Intermediate', description: 'Frontend markup, responsive design, and modern styling techniques' },
+        { name: 'Python', level: 'Expert' },
+        { name: 'SQL', level: 'Intermediate' },
+        { name: 'React & JavaScript', level: 'Intermediate' },
+        { name: 'HTML & CSS', level: 'Intermediate' },
+        { name: 'R', level: 'Intermediate' },
       ],
     },
     {
       category: '🤖 Machine Learning and AI',
       icon: <Database className="h-4 w-4" />,
       skills: [
-        { name: 'PyTorch & TensorFlow', level: 'Intermediate', description: 'Deep learning frameworks for neural networks and advanced AI model development' },
-        { name: 'Pandas & NumPy', level: 'Expert', description: 'Data manipulation, numerical computing, and comprehensive data analysis workflows' },
-        { name: 'Matplotlib & Seaborn', level: 'Expert', description: 'Advanced data visualization, statistical plotting, and publication-quality graphics' },
+        { name: 'PyTorch & TensorFlow', level: 'Intermediate' },
+        { name: 'Pandas & NumPy', level: 'Expert' },
+        { name: 'Matplotlib & Seaborn', level: 'Expert' },
+        { name: 'Scikit-learn', level: 'Expert' },
+        { name: 'Jupyter Notebooks', level: 'Expert' },
       ],
     },
     {
       category: '📊 Data Analytics Tools',
       icon: <BarChart className="h-4 w-4" />,
       skills: [
-        { name: 'Tableau', level: 'Intermediate', description: 'Business intelligence, interactive dashboards, and comprehensive data storytelling' },
-        { name: 'Power BI', level: 'Beginner', description: 'Microsoft business analytics, report generation, and enterprise data visualization' },
+        { name: 'Tableau', level: 'Intermediate' },
+        { name: 'Power BI', level: 'Beginner' },
+        { name: 'Excel', level: 'Expert' },
+        { name: 'STATA', level: 'Intermediate' },
+        { name: 'Git/GitHub', level: 'Intermediate' },
       ],
     },
   ];
@@ -49,9 +55,9 @@ const SkillsChat = () => {
   };
 
   return (
-    <div className="max-w-full">
-      <h1 className="text-2xl font-bold mb-4 text-gray-900">Technical Skills</h1>
-      <p className="mb-4 text-gray-600 leading-relaxed">Here's a breakdown of my technical expertise across different domains:</p>
+    <div className="max-w-full px-4 md:px-8 lg:px-12">
+      <h1 className="text-2xl font-bold mb-6 text-gray-900">Technical Skills</h1>
+      <p className="mb-6 text-gray-600 leading-relaxed">Here's a comprehensive overview of my technical expertise across different domains:</p>
       
       {skillsData.map((section, index) => (
         <motion.div
@@ -59,36 +65,40 @@ const SkillsChat = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: index * 0.1, duration: 0.4 }}
-          className="mt-6"
+          className="mt-8 mb-6"
         >
-          <h2 className="text-xl font-semibold mb-3 text-gray-800 flex items-center gap-2">
+          <h2 className="text-xl font-semibold mb-4 text-gray-800 flex items-center gap-2">
             {section.icon}
             {section.category}
           </h2>
           
-          <ul className="list-disc list-inside mb-4 space-y-2 text-gray-600">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 mb-6">
             {section.skills.map((skill, idx) => (
-              <motion.li
+              <motion.div
                 key={idx}
                 initial={{ opacity: 0, x: -10 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: (index * 0.1) + (idx * 0.05), duration: 0.3 }}
-                className="text-gray-600"
+                className="flex items-center justify-between p-3 bg-gray-50 rounded-lg border"
               >
-                <div className="flex items-start justify-between gap-3">
-                  <div className="flex-1">
-                    <strong className="font-semibold text-gray-800">{skill.name}</strong>
-                    <span className="ml-2 text-gray-600 leading-relaxed">- {skill.description}</span>
-                  </div>
-                  <Badge className={`${getLevelColor(skill.level)} px-2 py-1 text-xs flex-shrink-0`}>
-                    {skill.level}
-                  </Badge>
-                </div>
-              </motion.li>
+                <span className="font-medium text-gray-800">{skill.name}</span>
+                <Badge className={`${getLevelColor(skill.level)} px-2 py-1 text-xs flex-shrink-0 ml-2`}>
+                  {skill.level}
+                </Badge>
+              </motion.div>
             ))}
-          </ul>
+          </div>
         </motion.div>
       ))}
+      
+      {/* Extra content to maintain width */}
+      <div className="mt-8 p-4 bg-blue-50 rounded-lg border border-blue-200">
+        <p className="text-gray-700 leading-relaxed">
+          <strong className="text-gray-800">Experience Focus:</strong> I specialize in building machine learning models, 
+          performing statistical analysis, and extracting actionable insights from complex datasets to solve real-world problems. 
+          My experience spans from data preprocessing and feature engineering to model deployment and performance optimization.
+        </p>
+      </div>
     </div>
   );
 };
