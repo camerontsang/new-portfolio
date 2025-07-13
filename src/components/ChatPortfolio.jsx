@@ -387,6 +387,7 @@ Try clicking one of the topic buttons above for detailed information, or feel fr
             <button 
               onClick={() => handleTopicClick('about')}
               className="flex items-center space-x-2 px-3 py-2 rounded-full shadow-sm hover:shadow-md transition-all bg-white text-sm"
+              style={{ WebkitTapHighlightColor: 'transparent' }}
             >
               <span className="text-sm font-medium text-gray-700">About Me</span>
               <span className="text-lg">💭</span>
@@ -395,6 +396,7 @@ Try clicking one of the topic buttons above for detailed information, or feel fr
             <button 
               onClick={() => handleTopicClick('skills')}
               className="flex items-center space-x-2 px-3 py-2 rounded-full shadow-sm hover:shadow-md transition-all bg-white text-sm"
+              style={{ WebkitTapHighlightColor: 'transparent' }}
             >
               <span className="text-sm font-medium text-gray-700">Skills</span>
               <span className="text-lg">⚡</span>
@@ -403,6 +405,7 @@ Try clicking one of the topic buttons above for detailed information, or feel fr
             <button 
               onClick={() => handleTopicClick('projects')}
               className="flex items-center space-x-2 px-3 py-2 rounded-full shadow-sm hover:shadow-md transition-all bg-white text-sm"
+              style={{ WebkitTapHighlightColor: 'transparent' }}
             >
               <span className="text-sm font-medium text-gray-700">Projects</span>
               <span className="text-lg">📁</span>
@@ -411,6 +414,7 @@ Try clicking one of the topic buttons above for detailed information, or feel fr
             <button 
               onClick={() => handleTopicClick('contact')}
               className="flex items-center space-x-2 px-3 py-2 rounded-full shadow-sm hover:shadow-md transition-all bg-white text-sm"
+              style={{ WebkitTapHighlightColor: 'transparent' }}
             >
               <span className="text-sm font-medium text-gray-700">Contact</span>
               <span className="text-lg">✉️</span>
