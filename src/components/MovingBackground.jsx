@@ -95,6 +95,14 @@ const MovingBackground = ({ show = true }) => {
           className="text-gray-300 opacity-15"
         />
       </div>
+       {/* Layer 9 - Moving Right */}
+       <div style={{ ...layerStyle, top: '940px' }}>
+        <TextBackground
+          texts={['Cameron Tsang - Data Science & Math @ NYU Shanghai']}
+          velocity={25}
+          className="text-gray-300 opacity-15"
+        />
+      </div>
     </div>
   );
 };
