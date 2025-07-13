@@ -3,9 +3,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import Orb from './Orb';
-import TextBackground from './TextBackground';
 import { ProjectsCarousel } from './ProjectsCarousel';
 import SkillsChat from './SkillsChat';
+import MovingBackground from './MovingBackground';
 
 export const ChatPortfolio = () => {
   const [messages, setMessages] = useState([]);
@@ -182,66 +182,8 @@ Try clicking one of the topic buttons above for detailed information, or feel fr
 
   return (
     <div className={`relative h-screen bg-gradient-to-br from-gray-50 to-gray-100 ${messages.length > 0 ? 'overflow-hidden' : 'overflow-hidden'}`}>
-      {/* Background Text */}
-      {showBackground && (
-        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-          
-          
-          {/* Layer 2 - Moving Left */}
-          <div className="absolute top-1/6 left-0 w-full h-1/7">
-            <TextBackground
-              texts={['Cameron Tsang - Data Science & Math @ NYU Shanghai']}
-              velocity={-25}
-              className="text-gray-300 opacity-15"
-            />
-          </div>
-          
-          {/* Layer 3 - Moving Right */}
-          <div className="absolute top-2/6 left-0 w-full h-1/7">
-            <TextBackground
-              texts={['Cameron Tsang - Data Science & Math @ NYU Shanghai']}
-              velocity={25}
-              className="text-gray-300 opacity-15"
-            />
-          </div>
-          
-          {/* Layer 4 - Moving Left */}
-          <div className="absolute top-3/6 left-0 w-full h-1/7">
-            <TextBackground
-              texts={['Cameron Tsang - Data Science & Math @ NYU Shanghai']}
-              velocity={-25}
-              className="text-gray-300 opacity-15"
-            />
-          </div>
-          
-          {/* Layer 5 - Moving Right */}
-          <div className="absolute top-4/6 left-0 w-full h-1/7">
-            <TextBackground
-              texts={['Cameron Tsang - Data Science & Math @ NYU Shanghai']}
-              velocity={25}
-              className="text-gray-300 opacity-15"
-            />
-          </div>
-          
-          {/* Layer 6 - Moving Left */}
-          <div className="absolute top-5/6 left-0 w-full h-1/7">
-            <TextBackground
-              texts={['Cameron Tsang - Data Science & Math @ NYU Shanghai']}
-              velocity={-20}
-              className="text-gray-300 opacity-15"
-            />
-          </div>
-          {/* Layer 7  - Moving Right */}
-          <div className="absolute bottom left-0 w-full h-1/7">
-            <TextBackground
-              texts={['Cameron Tsang - Data Science & Math @ NYU Shanghai']}
-              velocity={25}
-              className="text-gray-300 opacity-15"
-            />
-          </div>
-          
-        </div>
-      )}
+      {/* Moving Background */}
+      <MovingBackground show={showBackground} />
       
       {/* Header */}
       <header className="p-6 flex justify-between items-center relative z-10">
